@@ -41,36 +41,38 @@ public class YourService extends KiboRpcService {
         /*//////////////////////////////
         api.startMission();
 
+
         MoveToWaypoint(waypoints_config.wp1);
         MoveToWaypoint(waypoints_config.point6);
-        MoveToWaypoint(waypoints_config.point1);
 
+        //move point1
+        MoveToWaypoint(waypoints_config.point1);
         // irradiate the laser
         api.laserControl(true);
-        api.laserControl(true);
-
         // take active target snapshots
         target_id = 1;
         api.takeTargetSnapshot(target_id);
 
+
+        //move point6
         MoveToWaypoint(waypoints_config.point6);
         // irradiate the laser
         api.laserControl(true);
-
         // take active target snapshots
         target_id = 6;
         api.takeTargetSnapshot(target_id);
 
-        MoveToWaypoint(waypoints_config.point2);
 
+        //move point2
+        MoveToWaypoint(waypoints_config.point2);
         // irradiate the laser
         api.laserControl(true);
-
         // take active target snapshots
         target_id = 2;
         api.takeTargetSnapshot(target_id);
 
 
+        //move point3
         MoveToWaypoint(waypoints_config.point3);
         // irradiate the laser
         api.laserControl(true);
@@ -78,6 +80,8 @@ public class YourService extends KiboRpcService {
         target_id = 3;
         api.takeTargetSnapshot(target_id);
 
+
+        //move point5
         MoveToWaypoint(waypoints_config.point5);
         // irradiate the laser
         api.laserControl(true);
@@ -85,6 +89,8 @@ public class YourService extends KiboRpcService {
         target_id = 5;
         api.takeTargetSnapshot(target_id);
 
+
+        //move point4
         MoveToWaypoint(waypoints_config.point4);
         // irradiate the laser
         api.laserControl(true);
