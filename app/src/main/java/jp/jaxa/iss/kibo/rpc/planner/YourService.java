@@ -2,7 +2,11 @@ package jp.jaxa.iss.kibo.rpc.planner;
 
 import android.util.Log;
 
+import gov.nasa.arc.astrobee.PendingResult;
 import gov.nasa.arc.astrobee.internal.BaseRobot;
+import gov.nasa.arc.astrobee.internal.BaseRobotImpl;
+import gov.nasa.arc.astrobee.internal.CommandBuilder;
+import gov.nasa.arc.astrobee.internal.Publishable;
 import gov.nasa.arc.astrobee.types.FlightMode;
 import gov.nasa.arc.astrobee.Result;
 import gov.nasa.arc.astrobee.Kinematics;
@@ -35,6 +39,21 @@ public class YourService extends KiboRpcService {
                             float collisionDistance);*/
         //BaseRobot::setOperatingLimits("",  FlightMode.PRECISION, 999, 999, 999, 999, 0.01);
         //BaseRobot.setOperatingLimits("",  FlightMode.PRECISION, 999, 999, 999, 999, 0.01);
+        /*BaseRobotImpl br = new BaseRobotImpl() {
+            @Override
+            protected CommandBuilder makeCommandBuilder() {
+                return null;
+            }
+
+            @Override
+            protected PendingResult publish(Publishable publishable) {
+                return null;
+            }
+        };
+        br.setOperatingLimits("",  FlightMode.PRECISION, 999, 999, 999, 999, (float)0.01);
+        */
+        //op.setOperatingLimits("",  FlightMode.PRECISION, 999, 999, 999, 999, 0.01);
+
 
         /*//////////////////////////////
         //      mission start         //
@@ -55,6 +74,7 @@ public class YourService extends KiboRpcService {
 
 
         //move point6
+        MoveToWaypoint(waypoints_config.wp2);
         MoveToWaypoint(waypoints_config.point6);
         // irradiate the laser
         api.laserControl(true);
@@ -73,6 +93,7 @@ public class YourService extends KiboRpcService {
 
 
         //move point3
+        MoveToWaypoint(waypoints_config.wp2);
         MoveToWaypoint(waypoints_config.point3);
         // irradiate the laser
         api.laserControl(true);
@@ -82,6 +103,7 @@ public class YourService extends KiboRpcService {
 
 
         //move point5
+        MoveToWaypoint(waypoints_config.wp3);
         MoveToWaypoint(waypoints_config.point5);
         // irradiate the laser
         api.laserControl(true);
@@ -91,6 +113,7 @@ public class YourService extends KiboRpcService {
 
 
         //move point4
+        MoveToWaypoint(waypoints_config.wp3);
         MoveToWaypoint(waypoints_config.point4);
         // irradiate the laser
         api.laserControl(true);

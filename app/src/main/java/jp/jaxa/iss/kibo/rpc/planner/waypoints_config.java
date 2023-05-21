@@ -9,19 +9,19 @@ public interface waypoints_config {
     /*Waypoint point1 = new Waypoint(11.375, -9.922, 5.303,
             0.707, -0.707, 0, 0,
             0, 0, 0);    // Point*/
-    Waypoint point1 = new Waypoint(11.318, -9.404, 5.251,
+    Waypoint point1 = new Waypoint(11.318, -9.8, 5.251,
             0.707, -0.707, 0, 0,
             0, 0, 0);
-    Waypoint point2 = new Waypoint(10.625, -9.144, 4.853,
+    Waypoint point2 = new Waypoint(10.625, -9.144, 4.5,
             0, 0.707, 0, 0.707,
             0, 0, 0);    // Point
-    Waypoint point3 = new Waypoint(10.722, -7.769, 4.879,
+    Waypoint point3 = new Waypoint(10.722, -7.769, 4.55,
             0, 0.707, 0, 0.707,
             0, 0, 0);    // Point
-    Waypoint point4 = new Waypoint(10.7, -6.616, 5.205,
+    Waypoint point4 = new Waypoint(10.5, -6.616, 5.205,
             0, 0, 1, 0,
             0, 0, 0);    // Point
-    Waypoint point5 = new Waypoint(10.992, -8.084, 4.893,
+    Waypoint point5 = new Waypoint(10.992, -8.084, 5.34,
             0, -0.707, 0, 0.707,
             0, 0, 0);    // Point
     Waypoint point6 = new Waypoint(11.21, -9.045, 4.941,
@@ -37,8 +37,11 @@ public interface waypoints_config {
 
     Waypoint wp1 = new Waypoint(10.508, -9.769, 4.567,
                                     0, 0, 0, 1,
-                                    0, 0, 0);    // Point
-    Waypoint wp2 = new Waypoint(11.3, -9.9, 4.6,
-            0, 0, 0, 1,
-            0, 0, 0.05);    // Point
+                                    0, 0, 0);    // way point
+    Waypoint wp2 = new Waypoint(10.571, -8.708, 5.251,
+            0, 0, -0.707, 0.707,
+            0, 0, 0.0);    // way point
+    Waypoint wp3 = new Waypoint(10.571, -7.463, 5.326,
+            0, 0, -0.707, 0.707,
+            0, 0, 0.0);    // way point
 }
