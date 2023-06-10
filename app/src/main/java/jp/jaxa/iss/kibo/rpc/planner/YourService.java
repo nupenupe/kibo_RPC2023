@@ -49,6 +49,7 @@ public class YourService extends KiboRpcService {
         //Long MissionTime = Time.get(1); //ミッション残り時間(ミリ秒)
         //List<Long> Time = api.getTimeRemaining();
 
+        //メモ　3→4おかしい　4→5
         while (api.getTimeRemaining().get(1) >(5-4.0)*60*1000){
             GoTarget(api.getActiveTargets(),Now_place);
         }
@@ -125,41 +126,6 @@ public class YourService extends KiboRpcService {
         }
     }
 
-    private void Print_AR(List<Mat> corners, Mat markerIds) {
-        for (int n = 0; n < 4; n++) {
-            Log.i(TAG, "markerIds:" + Arrays.toString(markerIds.get(n,0)));
-            Log.i(TAG, "左上:" + Arrays.toString(corners.get(n).get(0, 0)));
-            Log.i(TAG, "右上:" + Arrays.toString(corners.get(n).get(0, 1)));
-            Log.i(TAG, "右下:" + Arrays.toString(corners.get(n).get(0, 2)));
-            Log.i(TAG, "左下:" + Arrays.toString(corners.get(n).get(0, 3)));
-        }
-    }
-
-    //右下のマーカを見つける
-    private int findBottomRight(List<Mat> corners){
-        Log.i(TAG,"start findBottomRight");
-        // out = 関数のreturn
-        int out = 0;
-        int temp = 0;
-
-        //corners.get(n).get(0, 0) -> n番目のマーカの右下のxy座標を取得
-        for(int n=0; n<4; n++){
-            Log.i(TAG,"Loop" + n );
-            // 三平方の定理で一番数字が大きいものは遠いことを用いる
-            // a^2 + b^2 = c^2
-            double[] ab = corners.get(n).get(0,2);
-            int c = (int)ab[0] * (int)ab[0] + (int)ab[1] * (int)ab[1];
-            if(temp < c ){
-                temp = c;
-                out = n;
-                Log.i(TAG,"change");
-            }
-        }
-        // 右下（一番遠い）のは配列の何番目かをreturn
-        Log.i(TAG,"finish findBottomRight");
-        return out;
-    }
-
     // Kinematics Github
     // https://github.com/nasa/astrobee_android/blob/a8560ab0270ac281d8eadeb48645f4224582985e/astrobee_api/api/src/main/java/gov/nasa/arc/astrobee/Kinematics.java
     private void LoggingKinematics(){
@@ -180,11 +146,13 @@ public class YourService extends KiboRpcService {
         // ----- 最短距離で移動出来るようにActiveTargetの内容を入れ替える必要ものをここ or 別関数に入れる ------------
 
         while(i < index){
-            Log.i(TAG, "Let's go " + ActiveTargets.get(i).toString());
+            Log.i(TAG, "Target is " + ActiveTargets.get(i).toString());
             List<Integer> route = getShortestPath(Now_place,ActiveTargets.get(i));
             for(int n = 1; n<route.size();n++){
                 Log.i(TAG, "Let's go to node " +route.get(n).toString());
                 Waypoint2Number(route.get(n));
+                Now_place = route.get(n); //現在位置の変更
+                Log.i(TAG, "Now place is a" + Now_place);
             }
             api.laserControl(true);
             api.takeTargetSnapshot(ActiveTargets.get(i));
@@ -260,16 +228,8 @@ public class YourService extends KiboRpcService {
         return path;
     }
 
-    private String[] StringArray2DoubleArray(double[] array){
-        String[] stringArray = new String[array.length];
-        for (int i = 0; i < array.length; i++) {
-            stringArray[i] = Double.toString(array[i]);
-        }
-        return stringArray;
-    }
 
     private void Waypoint2Number(int n){
-        Now_place = n; //現在位置の変更
         switch (n){
             case 1:
                 MoveToWaypoint(waypoints_config.point1);
